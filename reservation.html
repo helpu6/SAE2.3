@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Réserver un Covoiturage</title>
+  <link rel="stylesheet" href="reservation.css">
+</head>
+<body>
+  <h2>Réserver un trajet de covoiturage</h2>
+  <form action="reserve.php" method="POST">
+    <label for="date_trajet">Date du trajet :</label>
+    <input type="date" name="date_trajet" required><br>
+
+    <label for="heure_depart">Heure de départ :</label>
+    <input type="time" name="heure_depart" required><br>
+
+    <label for="lieu_depart">Lieu de départ :</label>
+    <input type="text" name="lieu_depart" required><br>
+
+    <label for="lieu_arrivee">Lieu d'arrivée :</label>
+    <input type="text" name="lieu_arrivee" required><br>
+
+    <button type="submit">Réserver</button>
+  </form>
+</body>
+</html>

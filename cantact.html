@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Problème sur le site</title>
+  <style>
+    /* Ton CSS ici (identique à plus haut, inchangé) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f4f8fb;
+      color: #1e1e1e;
+      line-height: 1.6;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #4a90e2;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    main h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #333;
+    }
+
+    .contact-form {
+      width: 100%;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form label {
+      font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #4a90e2;
+      box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+    }
+
+    button {
+      padding: 0.6rem 1.2rem;
+      background-color: #4a90e2;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      align-self: flex-start;
+    }
+
+    button:hover {
+      background-color: #357ab8;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Signaler un Problème</h1>
+    </header>
+
+    <main>
+      <h2>Formulaire de contact</h2>
+      <form class="contact-form" id="contactForm">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required />
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="sujet">Sujet :</label>
+        <input type="text" id="sujet" name="sujet" required />
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Envoyer</button>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nom = document.getElementById("nom").value;
+      const email = document.getElementById("email").value;
+      const sujet = document.getElementById("sujet").value;
+      const message = document.getElementById("message").value;
+
+      const content = `📩 **Nouveau message depuis le formulaire de contact :**\n\n👤 **Nom :** ${nom}\n📧 **Email :** ${email}\n📝 **Sujet :** ${sujet}\n💬 **Message :**\n${message}`;
+
+      fetch("https://discord.com/api/webhooks/1361984961271300246/KBMfFbKvk7YDJdLCZtPt-CrlOd4OYsYD-u_qAQA-fcD1wWnPxSpuONaH-MuZ596-MjwB", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: content,
+        }),
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Message envoyé avec succès !");
+          document.getElementById("contactForm").reset();
+        } else {
+          alert("Une erreur est survenue lors de l'envoi.");
+        }
+      })
+      .catch(error => {
+        console.error("Erreur :", error);
+        alert("Impossible d'envoyer le message.");
+      });
+    });
+  </script>
+</body>
+</html>

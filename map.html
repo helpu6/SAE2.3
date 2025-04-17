@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Gares - France</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header,
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f5f5f5;
+    }
+
+    #map {
+      width: 100%;
+      height: 80vh;
+    }
+
+    #search-container {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+
+    #searchInput {
+      flex: 1;
+      max-width: 400px;
+      padding: 0.5rem;
+      border: 2px solid #007acc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    #searchBtn {
+      padding: 0.5rem 1rem;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #searchBtn:hover {
+      background-color: #005f99;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="search-container">
+    <input type="text" id="searchInput" placeholder="Rechercher une gare ou une adresse" />
+    <button id="searchBtn">Recherche</button>
+  </div>
+
+  <div id="map"></div>
+
+  <footer>
+    <p>© 2025 Carte des Gares de France fait par groupe 14</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([46.6, 2.2], 6);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(map);
+
+    // Fonction de recherche via Nominatim
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const query = document.getElementById('searchInput').value.trim();
+      if (!query) return;
+
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`;
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          if (data.length) {
+            const { lat, lon } = data[0];
+            map.setView([lat, lon], 15);
+          } else {
+            alert("Aucune adresse trouvée.");
+          }
+        })
+        .catch(() => alert("Erreur lors de la recherche."));
+    });
+
+    // Afficher uniquement les gares ferroviaires
+    function afficherGares() {
+      fetch('getAdresses.php')
+        .then(res => res.json())
+        .then(donnees => {
+          donnees.forEach(ville => {
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(ville)}`;
+            fetch(url)
+              .then(res => res.json())
+              .then(resultat => {
+                if (resultat.length > 0) {
+                  const lat = resultat[0].lat;
+                  const lon = resultat[0].lon;
+
+                  L.marker([lat, lon]).addTo(map)
+                    .bindPopup(`<strong>${ville}</strong>`);
+                }
+              });
+          });
+        });
+      }
+      afficherGares();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Nav bar */
+#nav_log {
+    background-color: #1f2937;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#nom_accueil a {
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#nom_accueil a:hover {
+    color: #60a5fa;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Résultats */
+#result {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Liste stylée */
+#result pre {
+    background-color: #f3f4f6;
+    border-left: 5px solid #3b82f6;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+/* Lien de réservation */
+#result li {
+    list-style: none;
+    margin-top: 15px;
+}
+
+#result a {
+    display: inline-block;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: transform 0.3s, background 0.3s;
+}
+
+#result a:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transform: scale(1.05);
+}
+
+/* Footer stylé */
+footer {
+    background-color: #f1f5f9;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #e5e7eb;
+}
+
+#copyrightEtIcons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo_fin img {
+    width: 70px;
+    margin-bottom: 10px;
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2));
+}
+
+#copyright span {
+    font-size: 0.9em;
+    color: #6b7280;
+}

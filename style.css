@@ -1,0 +1,365 @@
+/* ==================== GLOBAL RESET & BASE ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f4f8fb;
+  color: #1e1e1e;
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ==================== DARK MODE ==================== */
+body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* ==================== NAVIGATION BAR (COMMON) ==================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 20px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.4s ease;
+}
+
+/* Dark Mode Navbar */
+body.dark .navbar {
+  background-color: #1f1f1f; /* Change this color to modify the dark mode bar */
+}
+
+.brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #4a90e2;
+}
+
+/* Dark Mode Nav Links */
+body.dark .nav-links li a {
+  color: #ddd;
+}
+
+/* Dark/Light Toggle Button */
+.theme-toggle {
+  padding: 8px 18px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s;
+  font-weight: 500;
+}
+
+.theme-toggle:hover {
+  background-color: #357ab8;
+  transform: translateY(-2px);
+}
+
+body.dark .theme-toggle {
+  background-color: #999;
+  color: #000;
+}
+
+/* ==================== PAGE TRANSITIONS ==================== */
+/* The container that wraps all page content */
+#page-wrapper {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+#page-wrapper.fade-out {
+  opacity: 0;
+}
+#page-wrapper.fade-in {
+  opacity: 1;
+}
+
+/* ==================== INDEX / HOMEPAGE STYLES ==================== */
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  margin: 3rem 1rem;
+}
+
+.hero .logo {
+  width: 130px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.hero .logo:hover {
+  transform: scale(1.05);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.hero h1 span {
+  color: #4a90e2;
+}
+
+.divider {
+  width: 70px;
+  height: 4px;
+  background: #4a90e2;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+
+.hero h3 {
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+body.dark .hero h3 {
+  color: #ccc;
+}
+
+/* MAP SECTION */
+.map-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.map {
+  max-width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.map:hover {
+  transform: scale(1.05);
+}
+
+/* ==================== FORM / INSCRIPTION / CONNECT PAGE STYLES ==================== */
+.form-page {
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+/* Form Logo */
+.form-logo img {
+  width: 120px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.form-logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Form Container */
+.form-container {
+  background: #fff;
+  width: 100%;
+  max-width: 900px;
+  margin: 1rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-container h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #4a90e2;
+}
+
+/* Registration / Connection Form Layout */
+.registration-form,
+.connect-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Form Section */
+.form-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.section-title {
+  width: 100%;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* Form Groups */
+.form-group {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Radio Group */
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Labels & Inputs */
+label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+input[type="radio"] {
+  margin-right: 0.25rem;
+}
+
+/* Submit Button */
+.form-submit {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn-submit {
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #357ab8;
+  transform: translateY(-2px);
+}
+
+/* ==================== FOOTER (COMMON) ==================== */
+footer {
+  background-color: #ffffff;
+  color: #444;
+  padding: 2rem;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 0.9rem;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark footer {
+  background-color: #1f1f1f;
+  color: #aaa;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo {
+  width: 60px;
+  margin-bottom: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-section {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .brand {
+    font-size: 1.4rem;
+  }
+
+  .hero .logo,
+  .form-logo img {
+    width: 90px;
+  }
+  
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .divider {
+    width: 50px;
+    height: 3px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    font-size: 1rem;
+  }
+  
+  .map {
+    max-width: 90%;
+  }
+} 

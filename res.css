@@ -1,0 +1,101 @@
+/* Style général */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: #fff;
+    padding: 40px;
+    margin: 0;
+}
+
+/* Titres */
+h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #f1c40f;
+    text-shadow: 1px 1px 4px #000;
+}
+
+/* Formulaire */
+form {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+form:hover {
+    transform: scale(1.01);
+}
+
+/* Paragraphes */
+form p {
+    margin: 8px 0;
+    font-size: 1.1em;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border: none;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 1em;
+}
+
+/* Boutons */
+button {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+}
+
+/* Messages */
+p[style*="color:red"] {
+    background-color: rgba(255, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #ff6b6b;
+    text-align: center;
+}
+
+p[style*="color:green"] {
+    background-color: rgba(0, 255, 0, 0.15);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #2ecc71;
+    text-align: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+    form {
+        padding: 15px;
+        margin: 10px;
+    }
+}
+
